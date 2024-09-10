@@ -27,10 +27,6 @@ const App = (props) => {
       icon: <LockOpen24Regular />,
       primaryText: "Unlock features and functionality",
     },
-    {
-      icon: <DesignIdeas24Regular />,
-      primaryText: "Create and visualize like a pro",
-    },
   ];
 
   return (
