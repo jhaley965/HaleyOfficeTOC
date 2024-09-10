@@ -1,0 +1,58 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+node_modules/
+.pnp/
+.pnp.js
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Optional REACT cache
+.cache
+
+# Next.js build output
+.next/
+
+# Gatsby files
+.cache/
+public/
+
+# Nuxt.js build / generate output
+.nuxt/
+dist/
+
+# parcel-bundler cache (https://parceljs.org/)
+.cache
+dist/
+
+# Storybook files
+.out/
+
+# Production build output
+build/
+
+# Misc
+.DS_Store
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
