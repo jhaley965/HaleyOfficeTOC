@@ -8,11 +8,11 @@ const useStyles = makeStyles({
     flexDirection: "column",
     alignItems: "center",
     paddingBottom: "30px",
-    paddingTop: "100px",
+    paddingTop: "30px",
     backgroundColor: tokens.colorNeutralBackground3,
   },
   message: {
-    fontSize: tokens.fontSizeHero900,
+    fontSize: tokens.fontSizeHero500,
     fontWeight: tokens.fontWeightRegular,
     fontColor: tokens.colorNeutralBackgroundStatic,
   },
