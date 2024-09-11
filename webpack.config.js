@@ -24,7 +24,8 @@ module.exports = async (env, options) => {
       commands: "./src/commands/commands.js",
     },
     output: {
-      clean: true,
+      path: path.resolve(__dirname, 'build'),  // Specify the build folder
+      clean: true,  // Ensures previous builds are cleaned
     },
     resolve: {
       extensions: [".js", ".jsx", ".html"],
