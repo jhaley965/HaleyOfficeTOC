@@ -31,7 +31,7 @@ const App = (props) => {
 
   return (
     <div className={styles.root}>
-      <Header logo="assets/logo-filled.png" title={title} message="Jack Haley" />
+      <Header logo="assets/logo-filled.png" title={title} message="Jack Haley change" />
       <HeroList message="Discover what this add-in can do for you today!" items={listItems} />
       <TextInsertion insertText={insertText} />
     </div>
