@@ -90,6 +90,11 @@ module.exports = async (env, options) => {
       new webpack.ProvidePlugin({
         Promise: ["es6-promise", "Promise"],
       }),
+      new HtmlWebpackPlugin({
+        filename: "index.html",
+        template: "./src/index.html",  
+        chunks: ["polyfill", "vendor", "taskpane"],  
+      }),      
     ],
     devServer: {
       hot: true,
