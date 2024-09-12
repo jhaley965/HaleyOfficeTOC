@@ -60,6 +60,8 @@ export async function insertTOC() {
         <w:sdtEndPr/>
         <w:sdtContent>
           <w:p>
+          </w:p>
+          <w:p>
             <w:r>
               <w:fldChar w:fldCharType="begin"/>
             </w:r>
@@ -111,7 +113,6 @@ export async function insertTOC() {
 }
 
 export async function changeTocSpacingAfter(val){
-  console.log('change spacing to ' + val);
   await Word.run(async (context) => {
     let paragraphs = context.document.body.paragraphs;
     paragraphs.load('items'); // Load all paragraphs in the document
@@ -122,12 +123,10 @@ export async function changeTocSpacingAfter(val){
     //paragraphs.items.forEach(paragraph => {
     for (const paragraph of paragraphs.items) {
       try {
+        console.log('style: ' + paragraph.style + ', para '+ paragraph.text + '')
         if (paragraph.style === "TOC 1") {
-          console.log("SETTING PARA " + paragraph.text + " to spacing " + val);
           paragraph.spaceAfter = Number(val); // Set the spacing after (in points)
-          console.log("WORKED?");
           await context.sync();
-          console.log("AWAIT DONE");
         }
       } catch (exception) {
         console.log("changeTocSpacingAfter error:" + exception);

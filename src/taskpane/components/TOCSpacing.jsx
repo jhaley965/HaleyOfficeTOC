@@ -24,35 +24,49 @@ const useStyles = makeStyles({
     marginTop: "20px",
     width: "50%",
   },
+  
 });
 
 const TOCSpacing = (props) => {
 
   const [spacing, setSpacing] = React.useState(20); // State to track slider value
+  const [spacingChangeCommited, setSpacingChangeCommitted] = React.useState(false);
 
   useEffect(() => {
     console.log ("useEffect: " + spacing) ;
-    props.changeTocSpacingAfter(spacing);
-  }, [spacing]);
+    if (spacingChangeCommited) {
+      props.changeTocSpacingAfter(spacing)
+    };
+  }, [spacingChangeCommited]);
 
   const handleTocSpacingChange = async () => {
     await props.changeTocSpacingAfter(20);
   };
 
   const handleSliderChange = async (event) => {
-    // const value = event.target.value; // Get the value from the event
+    setSpacingChangeCommitted(false);
     const newVal = event.target.value;
-    setSpacing(newVal);            // Update the state
-    // handleTocSpacingChange();
+    setSpacing(newVal);
   };
 
-  
+  const handleSliderCommitted = async (event) => {
+    setSpacingChangeCommitted(true);
+  };
+
   const styles = useStyles();
 
   return (
     <div className={styles.textPromptAndInsertion}>
       <div className={styles.sliderContainer}>
-        <Slider min={0} max={50} step={1} value={spacing} onChange={handleSliderChange} aria-label="Spacing Slider" />
+        <Slider
+          min={0}
+          max={50}
+          step={1}
+          value={spacing}
+          onChange={handleSliderChange}
+          onMouseUp={handleSliderCommitted}
+          aria-label="Spacing Slider"
+        />
         <p>Current Spacing: {spacing} pts</p>
       </div>
     </div>
