@@ -112,7 +112,7 @@ export async function insertTOC() {
    }
 }
 
-export async function changeTocSpacingAfter(val){
+export async function changeTocSpacingAfter(val) {
   await Word.run(async (context) => {
     let paragraphs = context.document.body.paragraphs;
     paragraphs.load('items'); // Load all paragraphs in the document
@@ -120,16 +120,24 @@ export async function changeTocSpacingAfter(val){
     await context.sync();
 
     // Loop through the paragraphs and find those that use the "TOC1" style
-    //paragraphs.items.forEach(paragraph => {
     for (const paragraph of paragraphs.items) {
       try {
-        console.log('style: ' + paragraph.style + ', para '+ paragraph.text + '')
-        if (paragraph.style === "TOC 1") {
+        // Get a range for the first character in the paragraph
+        let firstCharRange = paragraph.getRange(Word.RangeLocation.start);
+        firstCharRange.load("style");
+
+        await context.sync();
+
+        const firstCharStyle = firstCharRange.style || "No Style"; // Handle empty styles
+        console.log('First char style: ' + firstCharStyle + ', para: ' + paragraph.text);
+
+        // Check if the first character style matches "TOC 1"
+        if (firstCharStyle === "TOC 1" || firstCharStyle === "Hyperlink") {
           paragraph.spaceAfter = Number(val); // Set the spacing after (in points)
           await context.sync();
         }
       } catch (exception) {
-        console.log("changeTocSpacingAfter error:" + exception);
+        console.log("changeTocSpacingAfter error: " + exception);
       }
     }
     await context.sync();
