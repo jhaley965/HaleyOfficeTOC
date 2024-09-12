@@ -37,7 +37,6 @@ export async function insertSampleText(text) {
 
 export async function insertTOC() {
   try {
-    console.log('running');
     await Word.run(async (context) => {
       let body = context.document.body;
 
@@ -111,3 +110,29 @@ export async function insertTOC() {
    }
 }
 
+export async function changeTocSpacingAfter(val){
+  console.log('change spacing to ' + val);
+  await Word.run(async (context) => {
+    let paragraphs = context.document.body.paragraphs;
+    paragraphs.load('items'); // Load all paragraphs in the document
+
+    await context.sync();
+
+    // Loop through the paragraphs and find those that use the "TOC1" style
+    //paragraphs.items.forEach(paragraph => {
+    for (const paragraph of paragraphs.items) {
+      try {
+        if (paragraph.style === "TOC 1") {
+          console.log("SETTING PARA " + paragraph.text + " to spacing " + val);
+          paragraph.spaceAfter = Number(val); // Set the spacing after (in points)
+          console.log("WORKED?");
+          await context.sync();
+          console.log("AWAIT DONE");
+        }
+      } catch (exception) {
+        console.log("changeTocSpacingAfter error:" + exception);
+      }
+    }
+    await context.sync();
+  });
+}

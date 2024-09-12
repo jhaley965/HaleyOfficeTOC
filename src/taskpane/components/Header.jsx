@@ -9,6 +9,7 @@ const useStyles = makeStyles({
     alignItems: "center",
     paddingBottom: "30px",
     paddingTop: "30px",
+    marginBottom: "20px",
     backgroundColor: tokens.colorNeutralBackground3,
   },
   message: {

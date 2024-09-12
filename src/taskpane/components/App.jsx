@@ -3,9 +3,10 @@ import PropTypes from "prop-types";
 import Header from "./Header";
 import TextInsertion from "./TextInsertion";
 import TOCInsertion from "./TOCInsertion";
+import TOCSpacing from "./TOCSpacing";
 import { makeStyles, TableRowIdContextProvider } from "@fluentui/react-components";
 import { Ribbon24Regular, LockOpen24Regular, DesignIdeas24Regular } from "@fluentui/react-icons";
-import { insertSampleText, insertTOC } from "../taskpane";
+import { insertSampleText, insertTOC, changeTocSpacingAfter } from "../taskpane";
 
 const useStyles = makeStyles({
   root: {
@@ -21,9 +22,10 @@ const App = (props) => {
 
   return (
     <div className={styles.root}>
-      <Header logo="assets/jmhlarge.png" title={title} message="Jack Haley change" />
+      <Header logo="assets/jmhlarge.png" title={title} message="Adjust table of contents spacing" />
       <TextInsertion insertText={insertSampleText} />
       <TOCInsertion insertToc={insertTOC} />
+      <TOCSpacing changeTocSpacingAfter={changeTocSpacingAfter} />
     </div>
   );
 };

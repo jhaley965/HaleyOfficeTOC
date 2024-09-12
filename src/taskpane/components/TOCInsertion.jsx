@@ -21,15 +21,17 @@ const useStyles = makeStyles({
     marginRight: "20px",
     maxWidth: "50%",
   },
+  button: {
+    marginBottom: "20px", // Add marginBottom here
+  },  
+
 });
 
 const TOCInsertion = (props) => {
 
   const handleTocInsertion = async () => {
-    console.log('this is thehandle');
     
     if (typeof props.insertToc === "function") {
-      console.log("insertToc is a valid function");
       await props.insertToc();
     } else {
       console.log("insertToc is not a function or is undefined");
@@ -42,7 +44,7 @@ const TOCInsertion = (props) => {
 
   return (
     <div className={styles.textPromptAndInsertion}>
-      <Button appearance="primary" disabled={false} size="large" onClick={handleTocInsertion}>
+      <Button className="styles.button" appearance="primary" disabled={false} size="large" onClick={handleTocInsertion}>
         Insert Table of Contents
       </Button>
     </div>

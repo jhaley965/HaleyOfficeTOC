@@ -21,6 +21,10 @@ const useStyles = makeStyles({
     marginRight: "20px",
     maxWidth: "50%",
   },
+  button: {
+    marginBottom: "20px", // Add marginBottom here
+  },  
+
 });
 
 const TextInsertion = (props) => {
@@ -35,7 +39,7 @@ const TextInsertion = (props) => {
 
   return (
     <div className={styles.textPromptAndInsertion}>
-      <Button appearance="primary" disabled={false} size="large" onClick={handleTextInsertion}>
+      <Button className={styles.button} appearance="primary" disabled={false} size="large" onClick={handleTextInsertion}>
         Insert Sample Text
       </Button>
     </div>
